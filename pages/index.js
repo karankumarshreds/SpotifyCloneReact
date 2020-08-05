@@ -1,23 +1,45 @@
 import '../styles/global.css';
 import Login from '../components/login';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { getToken } from '../components/spotify';
+import SpotifyWebApi from 'spotify-web-api-js';
+import Player from '../components/player';
+import { DataContext } from '../context/context-provider';
+
+const spotify = new SpotifyWebApi();
 
 const LandingPage = () => {
-    const [authToken, setAuthToken] = useState(undefined);
+
+    const [{ user, token }, dispatch] = useContext(DataContext);
+
     useEffect(() => {
-        const token = getToken();
-        if (token) {
-            setAuthToken(token);
+        const _token = getToken();
+        if (_token) {
+            // set token in state
+            dispatch({
+                type: 'SET_TOKEN',
+                token: _token
+            });
             // clear the token from the url
             window.location.hash = "";
+            // authenticate using this token 
+            const authenticate = async () => {
+                spotify.setAccessToken(_token);
+                const user = await spotify.getMe();
+                // dispatch an action
+                dispatch({
+                    type: 'SET_USER',
+                    user
+                })
+            }
+            authenticate();
         }
-    }, []);
+    }, [user, token]);
 
     return (
         <div>
-            {authToken ?
-                <h1>Welcome</h1>
+            {token ?
+                <Player />
                 :
                 <div>
                     <Login />

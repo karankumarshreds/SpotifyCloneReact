@@ -1,7 +1,12 @@
+import DataContextProvider from "../context/context-provider";
+import { initialState } from "../reducer";
+import reducer from '../reducer';
 
 const AppComponent = ({ Component, pageProps }) => {
     return (
-        <Component {...pageProps} />
+        <DataContextProvider initialState={initialState} reducer={reducer} >
+            <Component {...pageProps} />
+        </DataContextProvider>
     )
 };
 
