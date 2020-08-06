@@ -7,6 +7,8 @@ const scopes = [
     "user-read-playback-state",
     "user-top-read",
     "user-modify-playback-state",
+    // for playback 
+    "streaming", "user-read-email", "user-read-private"
 ];
 export const getToken = () => {
     // goes to the hash in the current url 
