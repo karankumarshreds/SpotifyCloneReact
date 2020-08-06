@@ -13,7 +13,6 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 const Body = ({ spotify }) => {
     const [{ user, weekly }] = useContext(DataContext);
     const songRows = weekly?.tracks?.items?.map(each => <SongRow key={each.added_at} track={each.track} />)
-    console.log('WEEKLY FROM BODY', weekly)
     return (
         <div className="body">
             <Header spotify={spotify} />

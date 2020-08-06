@@ -18,6 +18,19 @@
     max-width: 25%;
     color: #afafaf;
 }
+.footer__left {
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 300px;
+    flex: 0.3;
+}
+.footer__albumLogo {
+    height: 60px;
+    width: 60px;
+    margin-right: 20px;
+    object-fit: contain;
+  }
 
 .footer__center{
     width: 50%;
@@ -36,6 +49,7 @@
     transition: transform 100ms ease-in;
     transform: scale(1.1) !important;
     color: white !important;
+    cursor: pointer;
 }
 .footer .slider {
     color: #1db954;

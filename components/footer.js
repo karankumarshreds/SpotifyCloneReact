@@ -1,5 +1,7 @@
 import '../styles/footer.css';
 import ContinuousSlider from './slider';
+import { useContext } from 'react';
+import { DataContext } from '../context/context-provider';
 // ICONS
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
@@ -7,12 +9,27 @@ import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
 import RepeatIcon from '@material-ui/icons/Repeat';
 
-
 const Footer = () => {
+    const [{ item }] = useContext(DataContext)
     return (
         <div className="footer">
             <div className="footer__left">
-                <p>Song details here</p>
+                <img
+                    className="footer__albumLogo"
+                    src={item?.album.images[0].url || "/art.jpg"}
+                    alt={item?.name}
+                />
+                {item ? (
+                    <div className="footer__songInfo">
+                        <h4>{item.name || "Song name"}</h4>
+                        {/* <p>{item.artists.map((artist) => artist.name).join(", ")}</p> */}
+                    </div>
+                ) : (
+                        <div className="footer__songInfo">
+                            <h4>No song is playing</h4>
+                            <p>...</p>
+                        </div>
+                    )}
             </div>
             <div className="footer__center">
                 <ShuffleIcon style={{ fontSize: 20 }} />

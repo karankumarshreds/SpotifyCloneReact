@@ -9,6 +9,7 @@
 .body__avatar {
     margin-top: 40px;
     margin-right: 20px;
+    margin-left: 20px;
     box-shadow: 2px 4px 28px -1px rgba(0,0,0,0.75);
 }
 
@@ -26,7 +27,7 @@
 
 .body__icons {
     margin-top: 40px;
-    margin-left: 25px;
+    margin-left: 35px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -41,8 +42,8 @@
     cursor: pointer;
 }
 .body__songsList{
-    height: 150px;
-    max-height: 150px;
+    margin-left: 20px;
+    height: 250px;  
     overflow-y: scroll;
 }
 .body__songsList::-webkit-scrollbar {

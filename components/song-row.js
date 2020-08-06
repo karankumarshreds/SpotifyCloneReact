@@ -1,7 +1,6 @@
 import "../styles/song-row.css"
 
 const SongRow = ({ track }) => {
-    console.log('EACH TRACK', track);
     return (
         <div className="songRow" >
             <img className="songRow__album"

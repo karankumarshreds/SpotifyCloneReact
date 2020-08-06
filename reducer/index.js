@@ -4,7 +4,8 @@ export const initialState = {
     playing: false,
     token: null,
     tracks: [],
-    weekly: []
+    weekly: [],
+    item: null
 };
 
 const reducer = (state, action) => {
