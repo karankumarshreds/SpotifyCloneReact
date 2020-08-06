@@ -30,8 +30,16 @@ const LandingPage = () => {
                 dispatch({
                     type: 'SET_USER',
                     user
+                });
+            };
+            const getPlaylist = async () => {
+                const playlist = await spotify.getUserPlaylists();
+                dispatch({
+                    type: 'SET_PLAYLIST',
+                    playlist
                 })
             }
+
             authenticate();
         }
     }, [user, token]);

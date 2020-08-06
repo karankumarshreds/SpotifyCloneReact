@@ -1,4 +1,7 @@
 .body {
-    border: 1px solid green;
-    width: 80%;
+    color: white;
+    width: 93%;
+    height: 100vh;
+    background: linear-gradient(rgb(91,87,115)0%, rgba(0,0,0,1) 40%);
+    padding: 30px;
 }
