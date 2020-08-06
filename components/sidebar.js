@@ -10,7 +10,6 @@ import LibraryMusicOutlinedIcon from '@material-ui/icons/LibraryMusicOutlined';
 
 const SideBar = () => {
     const [{ playlist }] = useContext(DataContext);
-    console.log('Playlist ---> ', playlist);
     return (
         <div className="sidebar">
             <img className="sidebar__logo"
@@ -22,9 +21,9 @@ const SideBar = () => {
             <br />
             <strong className="sidebar__title">PLAYLISTS</strong>
             <hr />
-            <SideBarOption title="Hip Hop" />
-            <SideBarOption title="Rock" />
-            <SideBarOption title="Metal" />
+            {playlist?.items?.map(each => (
+                <SideBarOption key={each.id} title={each.name} />
+            ))}
         </div>
     );
 };

@@ -26,20 +26,25 @@ const LandingPage = () => {
             const authenticate = async () => {
                 spotify.setAccessToken(_token);
                 const user = await spotify.getMe();
+                console.log('USER', user);
                 // dispatch an action
                 dispatch({
                     type: 'SET_USER',
                     user
                 });
-            };
-            const getPlaylist = async () => {
                 const playlist = await spotify.getUserPlaylists();
+                console.log('PLAYLIST', playlist)
                 dispatch({
                     type: 'SET_PLAYLIST',
                     playlist
                 })
-            }
-
+                const weekly = await spotify.getPlaylist('44hjVgTeQ1RnMmslYupmlQ');
+                console.log('WEEKLY', weekly)
+                dispatch({
+                    type: 'SET_WEEKLY',
+                    weekly
+                })
+            };
             authenticate();
         }
     }, [user, token]);
@@ -47,7 +52,7 @@ const LandingPage = () => {
     return (
         <div>
             {token ?
-                <Player />
+                <Player spotify={spotify} />
                 :
                 <div>
                     <Login />

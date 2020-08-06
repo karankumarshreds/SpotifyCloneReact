@@ -3,12 +3,12 @@ import Sidebar from './sidebar';
 import Body from './body';
 import Footer from './footer';
 
-const Player = () => {
+const Player = ({ spotify }) => {
     return (
         <div className="player">
             <div className="player__body">
                 <Sidebar />
-                <Body />
+                <Body spotify={spotify} />
             </div>
             <Footer />
         </div>
