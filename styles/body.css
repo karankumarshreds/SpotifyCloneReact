@@ -27,7 +27,7 @@
 }
 .body__icons {
     margin-top: 40px;
-    margin-left: 35px;
+    margin-left: 30px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -41,11 +41,10 @@
     cursor: pointer;
     color: #1db954;
 }
-/* .body__songsList{
-    margin-left: 20px;
-    height: 250px;  
-    overflow-y: scroll;
+.body__songsList{
+    margin-left: 10px;
+    /* overflow-y: scroll; */
 }
-.body__songsList::-webkit-scrollbar {
+/* .body__songsList::-webkit-scrollbar {
     display: none;
 } */

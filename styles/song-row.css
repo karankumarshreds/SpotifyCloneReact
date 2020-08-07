@@ -12,15 +12,26 @@
     transform: scale(1.007);
     transition: transform 100ms ease-in-out ;
 }
+.songRow__left {
+    display: flex;
+    max-width: 400px;
+}
+.songRow__inner {
+    /* background-color: cadetblue; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 450px;
+}
 .songRow__info {
     margin-left: 20px;
 }
 
 .songRow__info h1 {
-    font-size: 16px;
+    font-size: 17px;
 }
 .songRow__info p {
-    font-size: 14px;
+    font-size: 15px;
     margin-top: 3px;
     color: grey;
 }
@@ -30,4 +41,7 @@
 }
 .songRow .audio {
     display: none;
+}
+.songRow__active{
+    color: #1db954;
 }
