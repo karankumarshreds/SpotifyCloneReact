@@ -16,7 +16,7 @@ const Header = ({ spotify }) => {
                 <input placeholder="Search for Songs, Artists or Podcasts..." />
             </div>
             <div className="header__right">
-                <Avatar src={user?.images[0]?.url || "/face.jpg"} alt="Karan" />
+                <Avatar src={user?.images[0]?.url || "/face.png"} alt="Karan" />
                 <h4>{user?.display_name}</h4>
             </div>
         </div>

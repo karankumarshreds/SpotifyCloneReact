@@ -9,7 +9,7 @@ const BodyInfo = ({ user, weekly }) => {
         <div className="body__info">
             <Avatar
                 className="body__avatar"
-                src={user?.images[0]?.url || "/face.jpg"}
+                src={user?.images[0]?.url || "/face.png"}
                 style={{ width: 230, height: 230 }}
             />
             <div className="body__infoText">

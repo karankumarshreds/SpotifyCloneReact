@@ -1,2 +1,6 @@
-node_modules
+.firebase
 .next
+.firebaserc
+firebase.json
+out
+node_modules
