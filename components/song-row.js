@@ -8,19 +8,23 @@ import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 
 const SongRow = ({ track }) => {
     const [{ song, playing }, dispatch] = useContext(DataContext);
-    let Icon = <PlayCircleFilledIcon />
-    if (song?.id === track.id && playing) {
-        Icon = <PauseCircleFilledIcon />
-    }
+
+    let Icon = song?.id === track.id && playing
+        ? <PauseCircleFilledIcon />
+        : <PlayCircleFilledIcon />
+
     const playSong = async () => {
         dispatch({
             type: 'SET_SONG',
             song: track
         });
-        dispatch({
-            type: 'SET_PLAYING',
-            playing: true
-        });
+        if (playing === false) {
+            dispatch({
+                type: 'SET_PLAYING',
+                playing: true
+            });
+        }
+
     };
     return (
         <div className="songRow" onClick={() => playSong()}>

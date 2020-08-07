@@ -16,16 +16,27 @@ const Body = ({ spotify }) => {
     )
 
     if (playing && song) {
-        if (player.current?.src === song.preview_url) {
+        if (player.current?.src === song.preview_url && playing === true) {
             player.current.pause();
             dispatch({
                 type: 'SET_PLAYING',
                 playing: false
             })
-        } else {
+            console.log('PAUSING SAME SONG', playing)
+        }
+        else if (player.current?.src === song.preview_url && playing === false) {
+            player.current.play();
+            dispatch({
+                type: 'SET_PLAYING',
+                playing: true
+            })
+            console.log('PLAYING SAME SONG', playing)
+        }
+        else {
             player.current.pause();
             player.current.src = song.preview_url;
             player.current.play();
+            console.log('PLAYING NEW SONG', playing)
         }
     }
 
