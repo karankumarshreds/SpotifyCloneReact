@@ -1,43 +1,40 @@
 import '../styles/body.css';
 import Header from './header';
-import { Avatar } from '@material-ui/core';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { DataContext } from '../context/context-provider';
 import SongRow from './song-row';
-
-//ICONS
-import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import BodyInfo from './body-info';
 
 const Body = ({ spotify }) => {
-    const [{ user, weekly }] = useContext(DataContext);
-    const songRows = weekly?.tracks?.items?.map(each => <SongRow key={each.added_at} track={each.track} />)
+    const player = useRef();
+    const [{ user, weekly, song, playing }, dispatch] = useContext(DataContext);
+    const songRows = weekly?.tracks?.items?.map(
+        each => <SongRow
+            key={each.id}
+            track={each.track}
+        />
+    )
+
+    if (playing && song) {
+        if (player.current?.src === song.preview_url) {
+            player.current.pause();
+            dispatch({
+                type: 'SET_PLAYING',
+                playing: false
+            })
+        } else {
+            player.current.pause();
+            player.current.src = song.preview_url;
+            player.current.play();
+        }
+    }
+
     return (
         <div className="body">
             <Header spotify={spotify} />
-            <div className="body__info">
-                <Avatar
-                    className="body__avatar"
-                    src={user?.images[0]?.url || "/face.jpg"}
-                    style={{ width: 230, height: 230 }}
-                />
-                <div className="body__infoText">
-                    <strong>PLAYLIST</strong>
-                    <h2>Discover Weekly</h2>
-                    <p>{weekly?.description}</p>
-                </div>
-            </div>
-            <div className="body__songs">
-                <div className="body__icons">
-                    <PlayCircleFilledIcon
-                        className="body__playButton"
-                        style={{ fontSize: 70 }} />
-                    <FavoriteIcon />
-                    <MoreHorizIcon />
-                </div>
-            </div>
+            <BodyInfo user={user} weekly={weekly} />
             <div className="body__songsList">
+                <audio ref={player} />
                 {songRows}
             </div>
         </div>
